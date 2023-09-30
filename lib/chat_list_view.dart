@@ -1,27 +1,42 @@
 import 'package:flutter/material.dart';
 //import 'package:my_flutter_chat/secondscreen.dart';
 import 'package:my_flutter_chat/statuscsreen.dart';
-
 import 'chat_tile.dart';
 
 class ChatListView extends StatelessWidget {
   const ChatListView({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController _searchController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 17, 110, 187),
-        title: const Text(
-          "MyChat",
-          style: TextStyle(
-            fontSize: 18,
-            letterSpacing: 2,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.deepPurple, Colors.purple.shade300],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
         ),
+        title: TextField(
+          controller: _searchController,
+          style: const TextStyle(color: Colors.white),
+          cursorColor: Colors.white,
+          decoration: const InputDecoration(
+            hintText: 'Search...',
+            hintStyle: TextStyle(color: Colors.white54),
+            border: InputBorder.none,
+          ),
+          onChanged: (value) {
+            // Perform search functionality here
+          },
+        ),
+
         centerTitle: true, // Aligns the title text to the center
         toolbarHeight: 70,
         elevation: 0,
@@ -59,8 +74,12 @@ class ChatListView extends StatelessWidget {
             ),
           ),
         ],
+
       ),
-      body: Column(
+
+      body:
+
+      Column(
         children: [
           Container(
             height: 50,
